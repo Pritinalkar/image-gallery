@@ -4,12 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>image gallery</title>
+    <style>
+        body{
+            background: #000;
+        }
+         .img{
+            padding-top: 70px;
+            height: 500px;
+            width: 700px;
+            object-fit:cover;
+            display: block;
+            margin: 20px auto;
+     }
+     .btn-container{
+            display: flex;
+            justify-content: center;
+
+     }
+     .btn{
+        height: 50px;
+        width: 70px;
+        margin: 0 10px;
+        cursor: pointer;
+        position: absolute;
+        border-radius: 7px;
+     }
+     .btn:hover{
+        background-color: #00ffff;
+     }
+     .btn-left{
+        top: 630px;
+        left: 840px;
+        position: absolute;
+     }
+     .btn-right{
+        top: 630px;
+        right: 830px;
+        position: absolute;
+     }
+     
+    </style>
 </head>
 <body>
+   
     <div class="btn-container">
-        <img src="" class="img" id="image"/>
-        <img src=""  type="button" class="btn btn-left" onclick="prev()"/>
-        <img src="" type="button" class="btn btn-right" onclick="next()"/>
+        <img src="./images/bird-1.jpg" class="img" id="image"/>
+        <button type="button" class="btn btn-left" onclick="prev()">prev</button>
+        <button type="button" class="btn btn-right" onclick="next()">next</button>
         </div>
+        <script>
+            const imgAlbum =[
+                "./images/bird-1.jpg",
+                "./images/bird-2.jpg",
+                "./images/bird-3.jpg",
+                "./images/bird-4.jpg",
+                "./images/bird-5.jpg"
+            ];
+            let imgIndex = 0;
+     function prev(){
+        if(imgIndex == 0){
+            imgIndex = imgAlbum.length - 1;
+        }
+        else{
+            imgIndex--;
+        }
+        const imgElement = document.getElementById('image')
+        imgElement.src=imgAlbum[imgIndex]
+     }
+    function next(){
+        if(imgIndex == imgAlbum.length-1){
+            imgIndex = 0;
+        }
+        else{
+            imgIndex++;
+        }
+    const imgElement = document.getElementById('image')
+    imgElement.src=imgAlbum[imgIndex]
+    }
+        </script>
 </body>
 </html>
